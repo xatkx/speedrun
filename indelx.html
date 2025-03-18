@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mokepon</title>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <h1>mokepon: fire, water, weed</h1>
+
+    <section id="tipo-mascota">
+        <h2>Selecciona tu mascota</h2>
+        
+        <!-- Hipoge -> Agua
+        Capipepo -> tierra
+        Ratigueya -> fuego
+        Langostelvis -> agua y tierra
+        tucapalma -> agua y tierra
+        Pydos -> tierra y fuego -->
+        <div>
+            <input type="radio" id="hipoge" name="mascota" value="hipoge">
+            <label for="hipoge">Hipoge</label>
+        </div>
+        <div>
+            <input type="radio" id="capipepo" name="mascota" value="capipepo">
+            <label for="capipepo">Capipepo</label>
+        </div>
+        <div>
+            <input type="radio" id="ratigueya" name="mascota" value="ratigueya">
+            <label for="ratigueya">Ratigueya</label>
+        </div>
+        <div>
+            <input type="radio" id="langostelvis" name="mascota" value="langostelvis">
+            <label for="langostelvis">Langostelvis</label>
+        </div>
+        <div>
+            <input type="radio" id="tucapalma" name="mascota" value="tucapalma">
+            <label for="tucapalma">Tucapalma</label>
+        </div>
+        <div>
+            <input type="radio" id="pydos" name="mascota" value="pydos">
+            <label for="pydos">Pydos</label>
+        </div>
+
+         <button id="btn-selecion">selecionar</button>
+    </section>
+
+    <section id="tipo-ataque">
+        
+        <p>tu mascota tiene <span id="i-life">3</span> vidas</p>
+        <p>las mascota del enemigo tiene <span id="his-life">3</span> vidas</p>
+        
+        <h4>Selecciona tu ataque</h4>
+        <p>
+            <button id="btn-fire">fire</button>
+            <button id="btn-water">water</button>
+            <button id="btn-weed">weed</button>
+        </p>
+    </section>
+
+    <section id="msg">
+        <p>Atacastes con fuego y tu rival ataco con tierra Ganaste felicidades</p>
+    </section>
+
+    <section id="menu">
+        <button id="btn-reset">Reiniciar</button>
+    </section>
+
+</body>
+</html>
