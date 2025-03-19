@@ -72,7 +72,8 @@ function handleButtonClick(event) {
         return
     }
 
-    sectionAtk.style.display = ""
+    sectionAtk.style.display = "block"
+    btnSelect.parentElement.style.display = "none"
     selet_pet = selected;
 
 };
