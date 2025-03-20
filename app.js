@@ -78,14 +78,6 @@ function handleButtonClick(event) {
 
 };
 function handleAtk(event){
-    if(gameover){
-        for (let i = 0;i <= btnfight.length-1;i++)
-        {
-            btnfight[i].disabled = true;
-            btnReset.style.display = "";
-        }
-        return
-    }
     if (!selet_pet){
         console.log("No seleccionaste ninguna mascota");
         return
@@ -99,6 +91,14 @@ function handleAtk(event){
     updateLife(result);
     msgSection.appendChild(msg)
     revisarconditionWin()
+    if(gameover){
+        btnReset.style.display = "block";
+        for (let i = 0;i <= btnfight.length-1;i++)
+        {
+            btnfight[i].disabled = true;
+            
+        }
+    }
 }
 function enemigoAtk(){
     return typesAtk[aleatorio(0,typesAtk.length-1)];
@@ -147,10 +147,10 @@ function updateLife(condition ) {
 }
 function revisarconditionWin(){
     let p;
-    if (his_life <= 0){
+    if (his_life < 1){
        p = createParrafo("GANASTE LA PARTIDA")
         gameover = true
-    }else if (my_life <= 0 ){
+    }else if (my_life < 1 ){
       p = createParrafo("PERDISTE BYE")
       gameover = true
     } else {
