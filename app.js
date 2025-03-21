@@ -186,3 +186,4 @@ function msg_consola(){
 
     return div;
 }
+

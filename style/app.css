@@ -271,3 +271,7 @@ label {
     background-color: #20ac2c;
     color: rgb(255, 255, 255);
 }
+
+.hidden {
+    display: none !important;
+}
