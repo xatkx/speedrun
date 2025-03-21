@@ -9,7 +9,7 @@ const sectionAtk = document.querySelector("#tipo-ataque");
 const dicCondition = 
 {
     0:"perdiste",
-    1:"ganase",
+    1:"ganaste",
     2:"empate"
 }
 
@@ -85,11 +85,12 @@ function handleAtk(event){
     my_ataque = event.target.value;
     // console.log(`atacaste con ${my_ataque}`);
     enemigo_ataque = enemigoAtk();
-    result = conditionWinner(my_ataque, enemigo_ataque)
+   
+    
+    let msg = msg_consola();
 
-    let msg = createParrafo(`Atacastes con ${my_ataque} y tu rival ataco con ${enemigo_ataque} ${dicCondition[result]}`)
-    updateLife(result);
     msgSection.appendChild(msg)
+    updateLife(conditionWinner(my_ataque,enemigo_ataque))
     revisarconditionWin()
     if(gameover){
         btnReset.style.display = "block";
@@ -124,9 +125,16 @@ function conditionWinner(you_atk,his_atk) {
 
     return win
 }
-function createParrafo(text)
+function createParrafo(text,tipe = "")
 {
-    let parrafo = document.createElement("P");
+    let parrafo;
+    if (tipe == ""){
+        parrafo = document.createElement("div");
+
+    }else
+    {
+        parrafo = document.createElement(tipe);
+    }
     parrafo.textContent  = text;
     
     return parrafo;
@@ -159,3 +167,21 @@ function revisarconditionWin(){
     msgSection.appendChild(p);
 }
 let aleatorio = (min,max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+function msg_consola(){
+    let you = createParrafo(` Atacastes con ${my_ataque} `,"span")
+    you.setAttribute("value",my_ataque);
+    let he = createParrafo(` y tu rival ataco con ${enemigo_ataque} `,"span")
+    he.setAttribute("value",enemigo_ataque);
+
+    let resul = dicCondition[conditionWinner(my_ataque,enemigo_ataque)]
+    let linea_3 = createParrafo(resul,"span")
+    linea_3.setAttribute("value",resul)
+
+    let div = document.createElement("div")
+    div.appendChild(you);
+    div.appendChild(he)
+    div.appendChild(linea_3)
+
+    return div;
+}

@@ -8,68 +8,84 @@
     <script src="./app.js" defer></script>
 </head>
 <body>
-    <h1 class="title box-shadow">mokepon: fire, water, weed</h1>
-    
-    <section id="tipo-mascota">
+
+    <h1 class="title">mokepon</h1>
+    <section id="tipo-mascota" class="container-1">
         <h2 class="center-text">Selecciona tu mascota</h2>
-        
-        <!-- Hipoge -> Agua
-        Capipepo -> tierra
-        Ratigueya -> fuego
-        Langostelvis -> agua y tierra
-        tucapalma -> agua y tierra
-        Pydos -> tierra y fuego -->
-        <section id="mascotas">
+        <section id="list-mascotas">
 
                 <div class="card-1">
                     <input type="radio" id="hipoge" name="mascota" value="hipoge">
-                    <label for="hipoge">Hipoge</label>
+                    <label for="hipoge">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Hipoge</p>
+                    </label>
                 </div>
                 <div class="card-1">
                     <input type="radio" id="capipepo" name="mascota" value="capipepo">
-                    <label for="capipepo">Capipepo</label>
+                    <label for="capipepo">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Capipepo</p>
+                    </label>
                 </div>
                 <div class="card-1">
                     <input type="radio" id="ratigueya" name="mascota" value="ratigueya">
-                    <label for="ratigueya">Ratigueya</label>
+                    <label for="ratigueya">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Ratigueya</p>
+                    </label>
                 </div>
                 <div class="card-1">
                     <input type="radio" id="langostelvis" name="mascota" value="langostelvis">
-                    <label for="langostelvis">Langostelvis</label>
+                    <label for="langostelvis">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Langostelvis</p>
+                    </label>
                 </div>
                 <div class="card-1">
                     <input type="radio" id="tucapalma" name="mascota" value="tucapalma">
-                    <label for="tucapalma">Tucapalma</label>
+                    <label for="tucapalma">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Tucapalma</p>
+                    </label>
                 </div>
                 <div class="card-1">
                     <input type="radio" id="pydos" name="mascota" value="pydos">
-                    <label for="pydos">Pydos</label>
+                    <label for="pydos">
+                        <img src="./pokemon-1574006_640.png" class="img-test" alt="">
+                        <p>Pydos</p>
+                    </label>
+                
                 </div>
             
         </section>
         <button  id="btn-selecion" class="btn">selecionar</button>
     </section>
-    
-    <section id="tipo-ataque">
-        
-        <p>tu mascota <span id="my-pet"></span> tiene <span id="my-life">3</span> vidas</p>
-        <p>la mascota <span id="his-pet"></span> del enemigo tiene <span id="his-life">3</span> vidas</p>
-        
-        <h4 class="center-text">Selecciona tu ataque</h4>
-        <p id="btns-ataque">
-            <button id="btn-fire" class="btn" value="fire" name="btn-atk">fire</button>
-            <button id="btn-water" class="btn" value="water" name="btn-atk">water</button>
-            <button id="btn-weed" class="btn" value="weed" name="btn-atk">weed</button>
-        </p>
-    </section>
-    
-    <section id="msg">
+    <section id="tipo-ataque" class="container-2">
+        <div class="personajes">
+            <p>tu mascota <span id="my-pet"></span> tiene <span id="my-life">3</span> vidas</p>
+            <p>la mascota <span id="his-pet"></span> del enemigo tiene <span id="his-life">3</span> vidas</p>   
+        </div>
+        <div class="menu-ataque">
+
+            <h4 class="center-text">Selecciona tu ataque</h4>
+            <div id="btns-ataque">
+                <button id="btn-fire" class="btn" value="fire" name="btn-atk">fire</button>
+                <button id="btn-water" class="btn" value="water" name="btn-atk">water</button>
+                <button id="btn-weed" class="btn" value="weed" name="btn-atk">weed</button>
+            </div>
+        </div>  
+        <ul id="msg">
         <!-- <p>Atacastes con fuego y tu rival ataco con tierra Ganaste felicidades</p> -->
-    </section>
-    
-    <section id="menu">
+        </ul>
+        
         <button id="btn-reset" class="btn">Reiniciar</button>
+      
     </section>
+    <div class="rules">
+        <h2>Rules</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque amet veritatis in porro facere dolorum renulla, up reprehenderit voluptates quo molestias sequi!</p>
+    </div>
 
 </body>
 </html>
