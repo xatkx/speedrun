@@ -1,13 +1,15 @@
 
 body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Lato';
+    color: #47525e;
+    text-transform: capitalize;
 }
 
 
 .title {
-    color: #4a4b4b;
-    width: 400px;
-    height: 40px;
+    
+    width: 450px;
+    height: 120px;
     border-radius: 5px;
     padding: 10px;
 
@@ -43,7 +45,7 @@ input[type=radio]{
     display: none;
 }
 label {
-    color: #de3163;
+    /* color: #de3163; */
     font-size: larger;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
@@ -78,14 +80,16 @@ label {
 
 }
 
+/* personaje */
+
 /* card */
 
 .card-1 > input:checked + label {
     color: white;
-    background-color: #4a4b4b;
+    background-color: #4a4b4b !important;
 }
 
-.card-11 {
+.card-1 {
 
     display: flex;
     flex-direction: column;
@@ -135,9 +139,25 @@ label {
     background-color: #de3163;
 }
 
+.card-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #de3163;
+    color: #47525e;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    
+}
 
+.card-2 .vidas {
+    font-size: 44px;
+    color: white;
+}
 
 #tipo-ataque{
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -145,6 +165,11 @@ label {
     gap: 10px;
 }
 .container-2 .personajes {
+    display: flex;
+    gap: 10px;
+
+
+    background-color: #de316200 !important;
     margin: 0 20%;
 }
 .container-2 .personajes p {
@@ -227,12 +252,22 @@ label {
     color: rgb(43, 255, 0);
 }
 [value=ganaste]{
-    color: rgb(0, 102, 255);
+    color: rgb(0, 102, 255) !important;
 }
 [value=perdiste]{
-    color: rgb(162, 0, 255);
+    color: rgb(162, 0, 255) !important;
 }
 
 [value=empate]{
     color: rgb(102, 102, 102);
+}
+
+.dead {
+    background-color: #47525e;
+    color: red;
+}
+
+.life {
+    background-color: #20ac2c;
+    color: rgb(255, 255, 255);
 }

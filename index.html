@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mokepon</title>
@@ -62,12 +66,26 @@
         <button  id="btn-selecion" class="btn">selecionar</button>
     </section>
     <section id="tipo-ataque" class="container-2">
-        <div class="personajes">
-            <p>tu mascota <span id="my-pet"></span> tiene <span id="my-life">3</span> vidas</p>
-            <p>la mascota <span id="his-pet"></span> del enemigo tiene <span id="his-life">3</span> vidas</p>   
-        </div>
-        <div class="menu-ataque">
+        <div class="personajes ">
 
+            <div class="card-2">
+                <span id="my-life" class="vidas">3</span>
+                <span id="my-pet"></span>
+                <img src="./pokemon-1574006_640.png" alt="" width="100"/>
+                <span>Yo</span>
+            </div>
+            <div class="card-2">
+                <span id="his-life" class="vidas">3</span>
+                <span id="his-pet"></span>
+                <img src="./pokemon-1574006_640.png" alt="" width="100"/>
+                <span>Enemigo</span>
+                
+            </div>   
+        </div>
+        <ul id="msg">
+         <!-- <p>Atacastes con fuego y tu rival ataco con tierra Ganaste felicidades</p> -->
+        </ul>
+        <div class="menu-ataque">
             <h4 class="center-text">Selecciona tu ataque</h4>
             <div id="btns-ataque">
                 <button id="btn-fire" class="btn" value="fire" name="btn-atk">fire</button>
@@ -75,9 +93,7 @@
                 <button id="btn-weed" class="btn" value="weed" name="btn-atk">weed</button>
             </div>
         </div>  
-        <ul id="msg">
-        <!-- <p>Atacastes con fuego y tu rival ataco con tierra Ganaste felicidades</p> -->
-        </ul>
+        
         
         <button id="btn-reset" class="btn">Reiniciar</button>
       

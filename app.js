@@ -45,8 +45,6 @@ function handlereset(event){
 }
 function handleButtonClick(event) {
 
-
-
     let list = event.target.parentElement.querySelectorAll("input[name=mascota]");
     let myPet = document.querySelector("#my-pet");
     let hisPet = document.querySelector("#his-pet");
@@ -61,18 +59,11 @@ function handleButtonClick(event) {
                 myPet.textContent = list[i].value;
                 hisPet.textContent = list[aleatorio(0, list.length-1)].value;
                 selected = true;
-
                 break;
             }
         }
-    if(!selected)
-    // si no se seleciono ninguna mascota
-    {             
-        console.log("No seleccionaste ninguna mascota");
-        return
-    }
 
-    sectionAtk.style.display = "block"
+    sectionAtk.style.display = ""
     btnSelect.parentElement.style.display = "none"
     selet_pet = selected;
 
@@ -154,13 +145,23 @@ function updateLife(condition ) {
     span_my_life.textContent = my_life;
 }
 function revisarconditionWin(){
+    let span_my_life = document.querySelector("#my-life").parentElement;
+    let span_his_life = document.querySelector("#his-life").parentElement;
+    console.log(span_his_life,span_my_life)
     let p;
     if (his_life < 1){
-       p = createParrafo("GANASTE LA PARTIDA")
+        p = createParrafo("GANASTE LA PARTIDA","div")
+        p.setAttribute("value",dicCondition[1])
         gameover = true
+        span_his_life.classList.add('dead');
+        span_my_life.classList.add("life")
+
     }else if (my_life < 1 ){
-      p = createParrafo("PERDISTE BYE")
-      gameover = true
+        p = createParrafo("PERDISTE BYE","div")
+        p.setAttribute("value",dicCondition[0])
+        gameover = true
+        span_my_life.classList.add('dead');
+        span_his_life.classList.add("life")
     } else {
         return
     }
