@@ -5,10 +5,15 @@ body{
     text-transform: capitalize;
 }
 
+span {
+    display: block;
+    text-align: center;
+    
+}
 
 .title {
     
-    width: 450px;
+
     height: 120px;
     border-radius: 5px;
     padding: 10px;
@@ -32,10 +37,11 @@ body{
 #list-mascotas {
     display: flex;
 
-    flex-wrap: wrap;
-    /* flex-direction: column; */
     justify-content: center;
-    align-items: center;
+    flex-flow: wrap;
+
+    
+  
     gap: 5px;
 
     height: 60vh;
@@ -66,11 +72,47 @@ label {
     box-sizing: border-box;
 }
 .btn:hover {
-    box-shadow: 2px 3px 2px rgb(0, 0, 0, 0.5);
+    border: 1.5px solid #47525e;
+    background-color: #47525e;
+    /* box-shadow: 2px 3px 2px rgb(0, 0, 0, 0.5); */
 }
 
 
 /* /// */
+
+
+.atk {
+    display: grid;
+    grid-template-columns: 120px 120px;
+    grid-template-rows: 100px;
+    gap: 10px;
+
+    background-color: #47525e;
+    border-radius: 10px;
+
+ 
+}
+
+.atk div {
+    margin: auto;
+    font-size: 24px;
+    display: flex !important;
+    justify-content: center;
+    /* align-items: center;  */
+    border-radius: 5px;
+    width: 90%;
+    height: 90%;
+
+}
+
+.atk div span{
+    border-radius: 5px;
+
+    padding: 10px;
+    width: 100% !important;
+    align-self: center;
+ 
+}
 
 .container-1 {  
     display: flex;
@@ -78,6 +120,31 @@ label {
     justify-content: center;
     align-items: center;
 
+}
+
+.result {
+    background-color: #47525e;
+    width: 40%;
+    height: 20lvh;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+}
+.result div {
+    height: 10lvh;
+    width: 10rem;
+    background-color: #de3163;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 24px;
+    font-style: oblique;
+    
+    align-content: center;
+    align-self: center;
+    color: whitesmoke !important;
+   
 }
 
 /* personaje */
@@ -148,6 +215,7 @@ label {
     font-weight: bold;
     border-radius: 5px;
     padding: 10px;
+    
     
 }
 
@@ -263,15 +331,37 @@ label {
 }
 
 .dead {
-    background-color: #47525e;
-    color: red;
+    background-color:  rgb(90, 15, 15);
+
 }
 
+.dead-2 {
+    border: 2px solid rgb(90, 15, 15);
+
+}
+
+.life-2 {
+    border: 2px solid #169721;
+
+}
 .life {
-    background-color: #20ac2c;
-    color: rgb(255, 255, 255);
+    background-color: #169721;
 }
 
 .hidden {
     display: none !important;
+}
+
+@media(max-width: 428px){
+    #list-mascotas {
+        height: auto;
+        width: 90%;
+        
+    }
+
+    .result {
+        width: 90%;
+    }
+
+
 }
