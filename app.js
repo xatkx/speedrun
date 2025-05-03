@@ -5,6 +5,8 @@ const btnfight = document.querySelectorAll("button[name=btn-atk]");
 const btnReset = document.querySelector("#btn-reset");
 const sectionAtk = document.querySelector("#tipo-ataque");
 
+// var
+
 const dicCondition = 
 {
     0:"perdiste",
@@ -20,62 +22,66 @@ let his_life = 3;
 
 let gameover = false
 let selectPet = false
+//-====
+
 document.addEventListener("DOMContentLoaded", function() {
 
     // console.log("DOM fully loaded and parsed");
     sectionAtk.style.display = "none";
     btnReset.style.display = "none";
+
     //add event 
     btnSelect.addEventListener("click", handleSelectItem);
     btnReset.addEventListener("click", reset);
+
     for(let i = 0; i < btnfight.length; i=i+1)
     {
         btnfight[i].addEventListener("click" , handleBtnAtk);
-        
         typesAtk[i] = btnfight[i].value
-
     }
-    //
-
-
 
 });    // fin de la carga del DOM
+
 function reset(event){
     window.location.reload();
 }
+
 function handleSelectItem(event) {
 
     let list = event.target.parentElement.querySelectorAll("input[name=mascota]");
-    let myPet = document.querySelector("#my-pet");
-    let hisPet = document.querySelector("#his-pet");
-    let selected = false;
+    let myPetLabel = document.querySelector("#my-pet");
+    let enemyPetLabel = document.querySelector("#his-pet");
+   
     for( let i = 0; i < list.length; i=i+1) 
         // recorro la lista de mascotas y ver si se seleciono una y selecionar una a su vez aleatoria para el enemigo
         {
             if(list[i].checked)
             {
                 // console.log(`selecionaste a ${list[i].value}`);
-                // console.log(myPet);
-                myPet.textContent = list[i].value;
-                hisPet.textContent = list[aleatorio(0, list.length-1)].value;
-                selected = true;
+                // console.log(myPetLabel);
+                myPetLabel.textContent = list[i].value;
+                enemyPetLabel.textContent = list[aleatorio(0, list.length-1)].value;
+                selectPet = true;
                 break;
             }
         }
 
+        if (!selectPet){
+            createAlert("selecione una mascota hd perra","aviso");
+            return
+        }
+
     sectionAtk.style.display = ""
     btnSelect.parentElement.style.display = "none"
-    selectPet = selected;
 
 };
 
 function handleBtnAtk(event){
     if (!selectPet){
-        console.log("No seleccionaste ninguna mascota");
+        createAlert("No seleccionaste ninguna mascota","bad");
         return
     }
     my_ataque = event.target.value;
-    // console.log(`atacaste con ${my_ataque}`);
     enemigo_ataque = AleatAtk();
 
     updateLife(conditionWinner(my_ataque,enemigo_ataque))
@@ -120,7 +126,6 @@ function conditionWinner(you_atk,his_atk) {
 }
 // actualiza la vidas
 function updateLife(condition ) { 
-
     let span_my_life = document.querySelector("#my-life");
     let span_his_life = document.querySelector("#his-life");
 
@@ -246,6 +251,23 @@ function createetiqueta(text,tipe = "")
     parrafo.textContent  = text;
     
     return parrafo;
+}
+
+function createAlert(text, type) {
+
+    let div = document.createElement("div");
+    let p = document.createElement("p");
+
+    div.classList.add("alert",type);
+
+    p.textContent = text;
+
+    div.appendChild(p)
+
+    document.body.appendChild(div);
+
+    setTimeout(() => div.remove(), 3000);
+
 }
 
 let aleatorio = (min,max) => Math.floor(Math.random() * (max - min + 1)) + min;
