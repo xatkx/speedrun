@@ -4,7 +4,18 @@ const btnSelect = document.querySelector("#btn-selecion");
 const btnfight = document.querySelectorAll("button[name=btn-atk]");
 const btnReset = document.querySelector("#btn-reset");
 const sectionAtk = document.querySelector("#tipo-ataque");
+// const listMascota = document.querySelector("#list-mascotas");
 
+
+let listPet = document.querySelectorAll("input[name=mascota]");
+let myPetNameLabel = document.querySelector("#my-pet");
+let enemyPetNameLabel = document.querySelector("#his-pet");
+
+
+let spanMyLife = document.querySelector("#my-life");
+let spanEnemyLife = document.querySelector("#his-life");
+
+let panelResultHtml = document.querySelector(".result");
 // var
 
 const dicCondition = 
@@ -13,6 +24,7 @@ const dicCondition =
     1:"ganaste",
     2:"empate"
 }
+
 
 let my_ataque = "";
 let enemigo_ataque = "";
@@ -31,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     btnReset.style.display = "none";
 
     //add event 
-    btnSelect.addEventListener("click", handleSelectItem);
+    btnSelect.addEventListener("click", handleSelectPet);
     btnReset.addEventListener("click", reset);
 
     for(let i = 0; i < btnfight.length; i=i+1)
@@ -46,28 +58,24 @@ function reset(event){
     window.location.reload();
 }
 
-function handleSelectItem(event) {
+function handleSelectPet(event) {
 
-    let list = event.target.parentElement.querySelectorAll("input[name=mascota]");
-    let myPetLabel = document.querySelector("#my-pet");
-    let enemyPetLabel = document.querySelector("#his-pet");
-   
-    for( let i = 0; i < list.length; i=i+1) 
-        // recorro la lista de mascotas y ver si se seleciono una y selecionar una a su vez aleatoria para el enemigo
+    for( let i = 0; i < listPet.length; i=i+1) 
+        // recorro la listPeta de mascotas y ver si se seleciono una y selecionar una a su vez aleatoria para el enemigo
         {
-            if(list[i].checked)
+            if(listPet[i].checked)
             {
-                // console.log(`selecionaste a ${list[i].value}`);
-                // console.log(myPetLabel);
-                myPetLabel.textContent = list[i].value;
-                enemyPetLabel.textContent = list[aleatorio(0, list.length-1)].value;
+                // console.log(`selecionaste a ${listPet[i].value}`);
+                // console.log(myPetNameLabel);
+                myPetNameLabel.textContent = listPet[i].value;
+                enemyPetNameLabel.textContent = listPet[aleatorio(0, listPet.length-1)].value;
                 selectPet = true;
                 break;
             }
         }
 
         if (!selectPet){
-            createAlert("selecione una mascota hd perra","aviso");
+            createAlert("selecione una mascota hd perra","warring");
             return
         }
 
@@ -83,11 +91,13 @@ function handleBtnAtk(event){
     }
     my_ataque = event.target.value;
     enemigo_ataque = AleatAtk();
+    let winner = conditionWinner(my_ataque,enemigo_ataque);
+    updateLife(winner);
 
-    updateLife(conditionWinner(my_ataque,enemigo_ataque))
     msgSection.appendChild(msg_consola())
     
     update_atk()
+
     if(gameover){
         msgSection.appendChild(create_etiqueta_state_win())
         panelResult()
@@ -126,10 +136,7 @@ function conditionWinner(you_atk,his_atk) {
 }
 // actualiza la vidas
 function updateLife(condition ) { 
-    let span_my_life = document.querySelector("#my-life");
-    let span_his_life = document.querySelector("#his-life");
 
-    
     if (condition == 1 && his_life >= 1){
         his_life -= 1;
     }
@@ -141,27 +148,27 @@ function updateLife(condition ) {
         gameover = true
     }
     
-    span_his_life.textContent = his_life;
-    span_my_life.textContent = my_life;
+    spanEnemyLife.textContent = his_life;
+    spanMyLife.textContent = my_life;
 }
 function create_etiqueta_state_win(){
 
-    let span_my_life = document.querySelector("#my-life").parentElement;
-    let span_his_life = document.querySelector("#his-life").parentElement;
+    let myCard = spanMyLife.parentElement;
+    let EnemyCard = spanEnemyLife.parentElement;
 
     let div;
 
     if (his_life < 1){
         div = createetiqueta("GANASTE LA PARTIDA","div")
         div.setAttribute("value",dicCondition[1])
-        span_his_life.classList.add('dead');
-        span_my_life.classList.add("life")
+        EnemyCard.classList.add('dead');
+     myCard.classList.add("life")
         
     }else {
         div = createetiqueta("PERDISTE LA PARTIDA","div")
         div.setAttribute("value",dicCondition[0]) 
-        span_my_life.classList.add('dead');
-        span_his_life.classList.add("life")
+     myCard.classList.add('dead');
+        EnemyCard.classList.add("life")
     }
 
     return div;
@@ -186,15 +193,14 @@ function msg_consola(){
 }
 
 function panelResult(){
-    let panelResult = document.querySelector(".result");
-    
-    if(panelResult.firstChild){
-        panelResult.firstChild.remove()
+
+    if(panelResultHtml.firstChild){
+        panelResultHtml.firstChild.remove()
     }
     div = create_etiqueta_state_win()
 
     div.classList.add("state-result");
-    panelResult.appendChild(div)
+    panelResultHtml.appendChild(div)
 }
 
 function update_atk(){
@@ -202,7 +208,7 @@ function update_atk(){
     let my = document.querySelector(".my-atk");
     let enemigo = document.querySelector(".enemigo-atk");
     
-    while(my.firstChild || enemigo.firstChild){
+    while(my.firstChild || enemigo.firstChild){ //limpia el html viejo
         if(my.firstChild){
             my.firstChild.remove();
         }
