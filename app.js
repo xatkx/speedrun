@@ -28,10 +28,11 @@ const dicCondition =
 
 let my_ataque = "";
 let enemigo_ataque = "";
-let typesAtk= []
 let my_life = 3;
 let his_life = 3;
-
+let typesAtk= []
+let mokepons = []
+// boolean
 let gameover = false
 let selectPet = false
 //-====
@@ -53,6 +54,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });    // fin de la carga del DOM
+
+class Mokepon {
+    constructor(name, vida, img) {
+        this.name = name;
+        this.vida = vida;
+        this.img = img
+    }
+}
+
+
+let hipoge = new Mokepon("hipoge",5,"./pokemon-1574006_640.png");
+let capipepo = new Mokepon("Capipepo",4,"./pokemon-1574006_640.png");
+let ratigueya = new Mokepon("Ratigueya",3,"./pokemon-1574006_640.png");
+
+mokepons.push(hipoge,capipepo,ratigueya);
 
 function reset(event){
     window.location.reload();
